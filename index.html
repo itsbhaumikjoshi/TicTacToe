@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="./styles/styles.css">
+    <script type="text/javascript" src="./scripts/script.js"></script>
+  </head>
+  <body>
+    <h1 class="title">Tic Tac Toe</h1>
+    <hr>
+    <div class="container">
+        <button id="button" onclick="reset()">Reset</button>
+    </div>
+    <div id="ans" class="option">
+      <span>Choose any one</span><br>
+      <button class="opt" id="bt1" onclick="x()">X</button><button id="bt2" onclick="o()" class="opt">O</button>
+    </div>
+      <div class="container">
+          <div class="game">
+            <table>
+              <tr>
+                <td id="a0" class="box"></td>
+                <td id="a1" class="box"></td>
+                <td id="a2" class="box"></td>
+              </tr>
+              <tr>
+                <td id="a3" class="box"></td>
+                <td id="a4" class="box"></td>
+                <td id="a5" class="box"></td>
+              </tr>
+              <tr>
+                <td id="a6" class="box"></td>
+                <td id="a7" class="box"></td>
+                <td id="a8" class="box"></td>
+              </tr>
+            </table>
+          </div>
+      </div>
+  </body>
+</html>
