@@ -1,4 +1,6 @@
-var human, computer, board = [];
+var human,
+  computer,
+  board = [];
 var wincomb = [
   [0, 1, 2],
   [3, 4, 5],
@@ -9,10 +11,10 @@ var wincomb = [
   [0, 4, 8],
   [2, 4, 6]
 ];
+var box = document.querySelectorAll(".box");
 
 //Choose The Variable To Play With
 function x() {
-  var box = document.querySelectorAll(".box");
   for (let i = 0; i < box.length; i++) {
     board[i] = i;
     box[i].innerHTML = "";
@@ -25,7 +27,6 @@ function x() {
 }
 
 function o() {
-  var box = document.querySelectorAll(".box");
   for (let i = 0; i < box.length; i++) {
     board[i] = i;
     box[i].innerHTML = "";
@@ -39,7 +40,6 @@ function o() {
 
 //Reset's The Game
 function reset() {
-  var box = document.querySelectorAll(".box");
   for (let i = 0; i < box.length; i++) {
     board[i] = i;
     box[i].innerHTML = "";
@@ -52,7 +52,6 @@ function reset() {
 
 // Logic For Human Turn
 function start() {
-  var box = document.querySelectorAll(".box");
   for (let i = 0; i < box.length; i++) {
     box[i].onclick = function() {
       box[i].innerHTML = human;
@@ -77,7 +76,6 @@ function start() {
 
 //Check If The Player Won Or Not
 function check(board, player) {
-  var box = document.querySelectorAll(".box");
   let value = null;
   let play = board.reduce((a, e, i) => (e === player ? a.concat(i) : a), []);
   for (let i = 0; i < wincomb.length; i++) {
@@ -91,7 +89,6 @@ function check(board, player) {
 
 // Show That The Game Is Tie
 function itsTie() {
-  var box = document.querySelectorAll(".box");
   for (let i = 0; i < box.length; i++) {
     box[i].style.backgroundColor = "green";
     document.querySelector("#ans").style.display = "block";
@@ -101,7 +98,6 @@ function itsTie() {
 
 // Display The Results
 function checkbox(obj) {
-  var box = document.querySelectorAll(".box");
   for (let i = 0; i < 3; i++) {
     if (obj.player === human) {
       box[obj.index[i]].style.backgroundColor = "lightgreen";
@@ -117,7 +113,6 @@ function checkbox(obj) {
 
 // Ends The Game So Player Can't Click Further
 function dismiss() {
-  var box = document.querySelectorAll(".box");
   for (let i = 0; i < box.length; i++)
     box[i].onclick = () => {
       alert("Game Is Over");
@@ -126,7 +121,6 @@ function dismiss() {
 
 //AI Turn
 function aiturn() {
-  var box = document.querySelectorAll(".box");
   box[minimax(board, computer).index].innerHTML = computer;
   board[minimax(board, computer).index] = computer;
   sameClick(board);
@@ -148,7 +142,6 @@ function emptybox() {
 
 // So That Player Can't Click The Same Box
 function sameClick(board) {
-  var box = document.querySelectorAll(".box");
   let sample = board.reduce(
     (a, e, i) => (e === computer || e === human ? a.concat(i) : a),
     []
@@ -200,8 +193,7 @@ function minimax(newBoard, player) {
         bestMove = i;
       }
     }
-  } 
-  else {
+  } else {
     var bestScore = 10000;
     for (var i = 0; i < moves.length; i++) {
       if (moves[i].score < bestScore) {
